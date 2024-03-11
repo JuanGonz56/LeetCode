@@ -1,23 +1,12 @@
-class Solution(object):
-    def gcdOfStrings(self, str1, str2):
-        """
-        :type str1: str
-        :type str2: str
-        :rtype: str
-        """
-        gcd = ''  
-        possible_gcds = ['']
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        # Check if concatenated strings are equal or not, if not return ""
+        str1 = 'ABC'
+        str2 = 'ABCABC'
 
-        #find the smaller lengthed string and iterate through the characters in order with longer string
-        min_str = str1 if str1 <= str2 else str2
-        max_str = str2 if str1 <= str2 else str1
-        for i, char in enumerate(min_str):
-            if char != max_str[i]: break
-            else:
-                gcd += char
-                if len(max_str)%(len(gcd)) == 0 and len(min_str)%len(gcd)==0:
-                    tmpstr =  gcd*(len(max_str)//len(gcd))
-                    tmp2str =  gcd*(len(min_str)//len(gcd))
-                    if tmpstr == max_str and tmp2str == min_str:
-                        possible_gcds.append(gcd)
-        return possible_gcds[-1]
+        if str1 + str2 != str2 + str1:
+            return ""
+        # If strings are equal than return the substring from 0 to gcd of size(str1), size(str2)
+        from math import gcd
+        print(str1)
+        return str1[:gcd(len(str1), len(str2))] 
