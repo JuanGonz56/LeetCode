@@ -3,6 +3,7 @@ class Solution:
         i, j = 0, 0
 
         result = []
+        
         while i < len(word1) and j < len(word2):
             result.append(word1[i])
             result.append(word2[j])
